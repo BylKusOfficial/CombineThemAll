@@ -7,9 +7,13 @@ public class Level : MonoBehaviour
 {
 	public event System.Action IsDone;
 
+	[SerializeField] private int levelNumber;
 	[SerializeField] private string helpMessage;
+	[SerializeField] private float rotationSpeed = 2;
 	[SerializeField] private List<CombinedPoints> allCombinedPoints;
-	[SerializeField] private GameObject winGo;
+
+	public int LevelNumber => levelNumber;
+	public string HelpMessage => helpMessage;
 
 	private const float combinedMinDistance = 0.07f;
 	private bool endLevel = false;
@@ -41,6 +45,16 @@ public class Level : MonoBehaviour
 		foreach(DragObject dragObject in dragObjects)
 			dragObject.EnableDrag(false);
 
+		StartCoroutine(Rotate());
 		IsDone?.Invoke();
+	}
+
+	private IEnumerator Rotate()
+	{
+		while(true)
+		{
+			transform.Rotate(Vector3.up, 45 * Time.deltaTime * rotationSpeed);
+			yield return null;
+		}
 	}
 }
