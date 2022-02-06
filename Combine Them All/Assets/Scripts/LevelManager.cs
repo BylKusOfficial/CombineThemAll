@@ -71,7 +71,6 @@ public class LevelManager : MonoBehaviour
 		{
 			nextLevelBtn.gameObject.SetActive(false);
 
-			//rootLevel.gameObject.SetActive(false);
 			endGameMessageGo.SetActive(true);
 		}
 	}
