@@ -5,4 +5,5 @@ using UnityEngine;
 public class UnityConstant : Singleton<UnityConstant>
 {
     public Material FlatMaterial;
+    public Material FlatFixedMaterial;
 }

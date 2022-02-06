@@ -9,7 +9,9 @@ public class Level : MonoBehaviour
 
 	[SerializeField] private int levelNumber;
 	[SerializeField] private string helpMessage;
+	[SerializeField] private Transform fixedElement;
 	[SerializeField] private List<CombinedPoints> allCombinedPoints;
+
 	[SerializeField] private Transform centerElementTr;
 
 	public int LevelNumber => levelNumber;
@@ -17,13 +19,18 @@ public class Level : MonoBehaviour
 
 	private const float rotationSpeed = 35;
 	private bool endLevel = false;
-	private DragObject[] dragObjects;
+	private ElementPart[] elementsPart;
 	private Vector3 originalCenterElementPosition;
 
 	private void Awake()
 	{
-		dragObjects = GetComponentsInChildren<DragObject>();
+		elementsPart = GetComponentsInChildren<ElementPart>();
 		////originalCenterElementPosition = centerElementTr.localPosition;
+	}
+
+	private void Start()
+	{
+		fixedElement.GetComponent<Renderer>().material = UnityConstant.Instance.FlatFixedMaterial;
 	}
 
 	private void Update()
@@ -45,24 +52,19 @@ public class Level : MonoBehaviour
 
 	private IEnumerator EndAsync()
 	{
-		foreach(DragObject dragObject in dragObjects)
-		{
-			dragObject.EnableDrag(false);
-			dragObject.SetOriginalMaterial();
-		}
+		foreach (ElementPart elementPart in elementsPart)
+			elementPart.SetFinished();
 
 		//StartCoroutine(FinishCombinePoints(transform, -originalCenterElementPosition*3));
 
 		//foreach (CombinedPoints combinedPoint in allCombinedPoints)
 		//	yield return StartCoroutine(FinishCombinePoints(combinedPoint.Point1.parent, combinedPoint.Point2.parent.position));
 
-		//StartCoroutine(Rotate());
+		StartCoroutine(Rotate());
 		IsDone?.Invoke();
 
 		yield return null;
 	}
-
-	
 
 	private IEnumerator FinishCombinePoints(Transform point1, Vector3 point2)
 	{
@@ -78,8 +80,6 @@ public class Level : MonoBehaviour
 		while(true)
 		{
 			transform.RotateAround(transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-			//transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + (Time.deltaTime * rotationSpeed), transform.localEulerAngles.z);
-			//transform.Rotate(Vector3.up, 45 * Time.deltaTime * rotationSpeed, );
 			yield return null;
 		}
 	}

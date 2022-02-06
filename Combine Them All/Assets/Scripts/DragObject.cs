@@ -4,28 +4,13 @@ using System.Collections;
 [RequireComponent(typeof(MeshCollider))]
 public class DragObject : MonoBehaviour
 {
-    private Renderer renderer;
     private Vector3 screenPoint;
     private Vector3 offset;
-    private Material originalMaterial;
-
     private bool enable = true;
-
-	private void Awake()
-	{
-        renderer = GetComponent<Renderer>();
-        originalMaterial = renderer.material;
-        renderer.material = UnityConstant.Instance.FlatMaterial;
-    }
 
 	public void EnableDrag(bool value)
 	{
         enable = value;
-    }
-
-    public void SetOriginalMaterial()
-	{
-        renderer.material = originalMaterial;
     }
 
     private void OnMouseDown()
