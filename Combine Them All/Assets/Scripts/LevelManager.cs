@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] private TextMeshProUGUI levelTitleTxt;
 	[SerializeField] private TextMeshProUGUI helpMessageTxt;
+	[SerializeField] private TextMeshProUGUI tutoMessageTxt;
 	[SerializeField] private GameObject endGameMessageGo;
 	[SerializeField] private Transform rootLevel;
 	[SerializeField] private GameObject winGo;
@@ -59,7 +60,9 @@ public class LevelManager : MonoBehaviour
 
 	private void EndLevel()
 	{
-		if(currentLevel != null)
+		tutoMessageTxt.gameObject.SetActive(false);
+
+		if (currentLevel != null)
 			currentLevel.IsDone -= CurrentLevel_IsDone;
 		winGo.SetActive(true);
 

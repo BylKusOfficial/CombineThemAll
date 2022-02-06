@@ -379,10 +379,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 2
-  helpMessage: fezzzz
+  helpMessage: I want to pee
   allCombinedPoints:
   - point1: {fileID: 5829564702133240996}
     point2: {fileID: 6920441469708109781}
+    minDistanceXaxis: 0.1
+    minDistanceYaxis: 0.1
   centerElementTr: {fileID: 0}
 --- !u!114 &4048097128319746081
 MonoBehaviour:
