@@ -383,6 +383,8 @@ MonoBehaviour:
   allCombinedPoints:
   - point1: {fileID: 5829564702133240996}
     point2: {fileID: 6920441469708109781}
+    minDistanceXaxis: 0.1
+    minDistanceYaxis: 0.1
   centerElementTr: {fileID: 3042813111046257448}
 --- !u!114 &800476523348796273
 MonoBehaviour:

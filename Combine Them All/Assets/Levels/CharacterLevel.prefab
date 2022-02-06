@@ -532,12 +532,20 @@ MonoBehaviour:
   allCombinedPoints:
   - point1: {fileID: 7997508467885157550}
     point2: {fileID: 7997508467261347415}
+    minDistanceXaxis: 0.1
+    minDistanceYaxis: 0.3
   - point1: {fileID: 7997508468194753948}
     point2: {fileID: 7997508467638117150}
+    minDistanceXaxis: 0.1
+    minDistanceYaxis: 0.35
   - point1: {fileID: 7997508467358141994}
     point2: {fileID: 7997508468085849392}
+    minDistanceXaxis: 0.2
+    minDistanceYaxis: 0.2
   - point1: {fileID: 7997508467008645077}
     point2: {fileID: 7997508468085849392}
+    minDistanceXaxis: 0.2
+    minDistanceYaxis: 0.2
   centerElementTr: {fileID: 7997508468872160795}
 --- !u!1 &7997508467638117149
 GameObject:

@@ -7,10 +7,15 @@ using UnityEngine;
 public class CombinedPoints/* : MonoBehaviour*/
 {
     [SerializeField] private Transform point1;
-	public Transform Point1 => point1;
     [SerializeField] private Transform point2;
-	public Transform Point2 => point2;
 
+	[SerializeField] private float minDistanceXaxis = 0.1f;
+	[SerializeField] private float minDistanceYaxis = 0.1f;
+
+	public Transform Point1 => point1;
+	public Transform Point2 => point2;
+	public float MinDistanceXaxis => minDistanceXaxis;
+	public float MinDistanceYaxis => minDistanceYaxis;
 
 	//public bool IsCombined { get; private set; }
 

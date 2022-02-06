@@ -16,7 +16,6 @@ public class Level : MonoBehaviour
 	public string HelpMessage => helpMessage;
 
 	private const float rotationSpeed = 35;
-	private const float combinedMinDistance = 0.1f;
 	private bool endLevel = false;
 	private DragObject[] dragObjects;
 	private Vector3 originalCenterElementPosition;
@@ -35,7 +34,8 @@ public class Level : MonoBehaviour
 		endLevel = true;
 		foreach (CombinedPoints combinedPoint in allCombinedPoints)
 		{
-			if(Vector2.Distance(combinedPoint.Point1.position, combinedPoint.Point2.position) > combinedMinDistance)
+			if (Mathf.Abs(combinedPoint.Point1.position.x - combinedPoint.Point2.position.x) > combinedPoint.MinDistanceXaxis 
+				|| Mathf.Abs(combinedPoint.Point1.position.y - combinedPoint.Point2.position.y) > combinedPoint.MinDistanceYaxis)
 				endLevel = false;
 		}
 
